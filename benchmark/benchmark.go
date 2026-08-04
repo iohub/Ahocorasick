@@ -17,7 +17,7 @@ import (
 
 	goahocorasick "github.com/anknown/ahocorasick"
 	"github.com/cloudflare/ahocorasick"
-	cedar "github.com/iohub/ahocorasick"
+	cedar "github.com/eugene-fedorenko/ahocorasick"
 )
 
 const zhDict = "./cn/dictionary.txt"

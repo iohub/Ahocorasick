@@ -204,7 +204,14 @@ func (m *Matcher) addOutput(nid, fid int) {
 func (m *Matcher) buildOutputs() {
 	da := m.da
 	for nid, fid := range m.fails {
-		if fid == -1 || !da.isEnd(fid) {
+		if fid == -1 {
+			continue
+		}
+		// Follow failure chain to find the nearest end node
+		for fid != 0 && !da.isEnd(fid) {
+			fid = m.fails[fid]
+		}
+		if !da.isEnd(fid) {
 			continue
 		}
 		da.toEnd(nid)
